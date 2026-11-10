@@ -1,134 +1,24 @@
-
+{
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "AR-Tangram Tutor System Physical Schema (JSON Model)",
-  "description": "Фізична схема локальної бази даних мобільного застосунку у форматі JSON Schema",
+  "title": "AR-Tangram Tutor System Physical Schema (Broken)",
+  "description": "Помилкова схема для тестування negative test case",
   "type": "object",
   "properties": {
     "userProfile": {
       "type": "object",
-      "description": "Профіль користувача та його ігрові налаштування",
       "properties": {
-        "username": {
-          "type": "string",
-          "description": "Ім'я користувача (нікнейм)",
-          "minLength": 3,
-          "maxLength": 20,
-          "pattern": "^[A-Za-zА-Яа-їЄєІіЇїҐґ0-9_]{3,20}$"
-        },
-        "email": {
-          "type": "string",
-          "format": "email",
-          "description": "Електронна пошта користувача"
-
-        "registrationDate": {
-          "type": "string",
-          "format": "date",
-          "description": "Дата реєстрації у форматі YYYY-MM-DD"
-        },
-        "preferences": {
-          "type": "object",
-          "description": "Індивідуальні налаштування додатка",
-          "properties": {
-            "soundEnabled": {
-              "type": "boolean",
-              "description": "Статус звукового супроводу"
-            },
-            "difficultyLevel": {
-              "type": "string",
-              "description": "Рівень складності головоломки",
-              "enum": ["Easy", "Medium", "Hard"]
-            }
-          },
-          "required": ["soundEnabled", "difficultyLevel"]
-        }
+        "username": "not_an_object_just_a_string",
+        "email": "invalid-email-format",
       },
-      "required": ["username", "email", "registrationDate", "preferences"]
-    },
-    "levelData": {
-      "type": "object",
-      "description": "Дані про ігрові рівні та силуети",
-      "properties": {
-        "levelId": {
-          "type": "integer",
-          "minimum": 1,
-          "description": "Унікальний ідентифікатор рівня"
-        },
-        "levelName": {
-          "type": "string",
-          "minLength": 2,
-          "maxLength": 50,
-          "description": "Назва рівня (силуету тварини)"
-        },
-        "targetSilhouette": {
-          "type": "object",
-          "description": "Цільовий силует для складання",
-          "properties": {
-            "contourImage": {
-              "type": "string",
-              "description": "Шлях або ресурс контурного зображення"
-            }
-          },
-          "required": ["contourImage"]
-        },
-        "tangramPieces": {
-          "type": "array",
-          "description": "Список деталей Танграму та їх маркерів",
-          "minItems": 7,
-          "maxItems": 7,
-          "uniqueItems": true,
-          "items": {
-            "type": "object",
-            "properties": {
-              "pieceId": {
-                "type": "integer",
-                "minimum": 1,
-                "maximum": 7,
-                "description": "Номер деталі Танграму (від 1 до 7)"
-              },
-              "defaultColor": {
-                "type": "string",
-                "description": "Колір відображення деталі"
-              },
-              "arUcoMarker": {
-                "type": "object",
-                "description": "Параметри AR-маркера на деталі",
-                "properties": {
-                  "markerId": {
-                    "type": "integer",
-                    "minimum": 0,
-                    "description": "ID ArUco-маркера"
-                  },
-                  "markerType": {
-                    "type": "string",
-                    "pattern": "^ArUco_[0-9]+x[0-9]+_[0-9]+$",
-                    "description": "Тип та сітка маркера (наприклад, ArUco_4x4_50)"
-                  },
-                  "coordinates": {
-                    "type": "array",
-                    "description": "Координати розміщення на робочій поверхні [X, Y]",
-                    "minItems": 2,
-                    "maxItems": 2,
-                    "uniqueItems": false,
-                    "items": {
-                      "type": "number"
-                    }
-                  },
-                  "rotationAngle": {
-                    "type": "number",
-                    "minimum": 0.0,
-                    "maximum": 360.0,
-                    "description": "Кут повороту деталі в градусах"
-                  }
-                },
-                "required": ["markerId", "markerType", "coordinates", "rotationAngle"]
-              }
-            },
-            "required": ["pieceId", "arUcoMarker"]
-          }
-        }
-      },
-      "required": ["levelId", "levelName", "targetSilhouette", "tangramPieces"]
+      "required": ["username", "email",]
     }
-  },
-  "required": ["userProfile", "levelData"]
-}
+    "levelData": [
+      {
+        "levelId": "should_be_integer_but_is_string",
+        "tangramPieces": {
+          "minItems": 7
+        }
+      }
+    ]
+  }
+  "extraTrailingComma": true,
