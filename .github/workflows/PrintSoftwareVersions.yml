@@ -5,23 +5,17 @@ on:
     branches: [ main ]
 
 jobs:
-  PrintLanguageVersions:
+  PrintDataProcessingVersions:
     runs-on: ubuntu-latest
     steps:
-      - name: Print .NET Version
+      - name: Print .NET Version (.NET / OpenCV Runtime)
         run: dotnet --version
-      - name: Print Node Version
-        run: node --version
-      - name: Print Python Version
-        run: python --version
+      - name: Print .NET SDK Info
+        run: dotnet --info
 
-  PrintDBMSVersions:
+  PrintDatabaseVersions:
     runs-on: ubuntu-latest
-    needs: [PrintLanguageVersions]
+    needs: [PrintDataProcessingVersions]
     steps:
-      - name: Print PostgreSQL Version
-        run: psql --version || true
-      - name: Print MySQL Version
-        run: mysql -V || true
-      - name: Print MongoDB Version
-        run: mongod --version || true
+      - name: Print SQLite Version (Database Server SQLite / JSON)
+        run: sqlite3 --version
