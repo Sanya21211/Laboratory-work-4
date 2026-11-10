@@ -1,24 +1,17 @@
-{
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "AR-Tangram Tutor System Physical Schema (Broken)",
-  "description": "Помилкова схема для тестування negative test case",
-  "type": "object",
-  "properties": {
-    "userProfile": {
-      "type": "object",
-      "properties": {
-        "username": "not_an_object_just_a_string",
-        "email": "invalid-email-format",
-      },
-      "required": ["username", "email",]
-    }
-    "levelData": [
-      {
-        "levelId": "should_be_integer_but_is_string",
-        "tangramPieces": {
-          "minItems": 7
-        }
-      }
-    ]
-  }
-  "extraTrailingComma": true,
+name: Data Schema Code Convention
+
+on:
+  push:
+    branches: [ main, laboratory-work-4 ]
+
+jobs:
+  json_linter_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Start JSON Linter for Data Schema
+        run: |
+          npm i -g @prantlf/jsonlint
+          jsonlint $GITHUB_WORKSPACE/3-SoftwareConstruction/3.1-GitHubActions/DataSchema.json
