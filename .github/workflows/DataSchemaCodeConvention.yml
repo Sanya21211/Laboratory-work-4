@@ -1,0 +1,16 @@
+name: Data Schema Code Convention
+
+on:
+  push:
+    branches: [ main ]
+jobs:
+  json_linter_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Start JSON Linter for Data Schema
+        run: |
+          npm i -g @prantlf/jsonlint
+          jsonlint $GITHUB_WORKSPACE/3-SoftwareConstruction/3.1-GitHubActions/README.md || true
