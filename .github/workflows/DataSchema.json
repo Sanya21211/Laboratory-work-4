@@ -19,7 +19,7 @@
           "type": "string",
           "format": "email",
           "description": "Електронна пошта користувача"
-        },
+
         "registrationDate": {
           "type": "string",
           "format": "date",
