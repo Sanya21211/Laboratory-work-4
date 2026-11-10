@@ -10,14 +10,18 @@ jobs:
     steps:
       - name: Print .NET Version
         run: dotnet --version
-      - name: Print C# Compiler Info
-        run: dotnet --info
+      - name: Print Node Version
+        run: node --version
+      - name: Print Python Version
+        run: python --version
 
   PrintDBMSVersions:
     runs-on: ubuntu-latest
     needs: [PrintLanguageVersions]
     steps:
-      - name: Print Python Version
-        run: python --version
-      - name: Print Node.js Version
-        run: node --version
+      - name: Print PostgreSQL Version
+        run: psql --version || true
+      - name: Print MySQL Version
+        run: mysql -V || true
+      - name: Print MongoDB Version
+        run: mongod --version || true
