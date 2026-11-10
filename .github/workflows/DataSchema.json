@@ -1,4 +1,4 @@
-{
+
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "AR-Tangram Tutor System Physical Schema (JSON Model)",
   "description": "Фізична схема локальної бази даних мобільного застосунку у форматі JSON Schema",
