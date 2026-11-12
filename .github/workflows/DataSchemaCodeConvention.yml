@@ -2,7 +2,8 @@ name: Data Schema Code Convention
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, laboratory-work-4 ]
+
 jobs:
   json_linter_test:
     runs-on: ubuntu-latest
@@ -13,4 +14,4 @@ jobs:
       - name: Start JSON Linter for Data Schema
         run: |
           npm i -g @prantlf/jsonlint
-          jsonlint $GITHUB_WORKSPACE/3-SoftwareConstruction/3.1-GitHubActions/README.md || true
+          jsonlint $GITHUB_WORKSPACE/3-SoftwareConstruction/3.1-GitHubActions/DataSchemaModified
