@@ -1,17 +1,8 @@
-name: Data Schema Code Convention
-
-on:
-  push:
-    branches: [ main, laboratory-work-4 ]
-
-jobs:
-  json_linter_test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-
-      - name: Start JSON Linter for Data Schema
-        run: |
-          npm i -g @prantlf/jsonlint
-          jsonlint $GITHUB_WORKSPACE/3-SoftwareConstruction/3.1-GitHubActions/DataSchema.json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AR-Tangram Tutor System Broken Schema",
+  "type": "object"
+  "properties": {
+    "error": true
+  }
+}
