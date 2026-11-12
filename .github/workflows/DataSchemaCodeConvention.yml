@@ -2,7 +2,7 @@ name: Data Schema Code Convention
 
 on:
   push:
-    branches: [ main, laboratory-work-4 ]
+    branches: [ main ]
 
 jobs:
   json_linter_test:
